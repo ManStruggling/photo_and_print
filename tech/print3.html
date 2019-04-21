@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <span id='div1'>把要打印的内容放这里</span>
+    <p>所有内容</p>
+    <div id="div2">div2的内容</div>
+    <a href="javascript:printme()" target="__blank">打印</a>
+    <script language="javascript">
+        function printme() {
+            document.body.innerHTML = document.getElementById('div1').innerHTML + '<br />' + document.getElementById('div2').innerHTML;
+            window.print();
+            window.location.reload()
+        }
+    </script>
+</body>
+
+</html>

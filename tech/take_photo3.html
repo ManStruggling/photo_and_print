@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <video src=""></video>
+    <script type="text/javascript">
+        window.onload = function () {
+            var opt = {
+                audio: true,
+                video: {
+                    width: 375,
+                    height: 603
+                }
+            };
+            console.log(window.navigator)
+            // console.log(window.navigator.mediaDevices)
+            navigator.getMedia = navigator.getUserMedia ||
+                navigator.mediaDevices ||
+                navigator.mozGetUserMedia ||
+                navigator.msGetUserMedia;
+                console.log(navigator.mediaDevices)
+            navigator.mediaDevices.getUserMedia(opt)
+                .then(function (mediaStream) {
+                    var video = document.querySelector('video');
+                    video.srcObject = mediaStream;
+                    video.onloadedmetadata = function (e) {
+                        video.play();
+                    };
+                })
+                .catch(function (err) {
+                    console.log(err.name + ": " + err.message);
+                }); // always check for errors at the end.
+        }
+    </script>
+</body>
+
+</html>
